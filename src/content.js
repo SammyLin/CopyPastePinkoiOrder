@@ -28,6 +28,12 @@ try {
     var order_date      = order.getElementsByClassName('time')[0].textContent.match(/\d{4}\/\d{2}\/\d{2}/)[0]; //下單時間
     var order_url       = order.getElementsByClassName('newtab')[0].href; // 訂單頁面
 
+    // 付款日期
+    var pay_date        = order.getElementsByClassName('payment')[0].getElementsByClassName('left')[0].getElementsByTagName('div')[2].textContent.match(/\d{4}\/\d{2}\/\d{2}/)
+    if (pay_date != null) {
+      pay_date = pay_date[0]
+    }
+
     var tel             = order.getElementsByClassName('tel')[0].getElementsByTagName('i')[0].innerHTML.replace(/ /ig,'-'); // 收件人電話 TODO 改成中間有線
     tel                 = TaiwanPhone_AddDashes(tel);
 
@@ -73,7 +79,8 @@ try {
                   payment_method:   payment_method,
                   order_date:       order_date,
                   redeemed:         redeemed,
-                  order_url:        order_url
+                  order_url:        order_url,
+                  pay_date:         pay_date
                 })
   }
 
@@ -89,7 +96,7 @@ try {
                                               item.minisum + '\t' +
                                               item.payment_method + '\t' +
                                               item.order_date + '\t' +
-                                              '<付款日期>' + '\t' +
+                                              item.pay_date + '\t' +
                                               item.redeemed + '\t' +
                                               item.order_url
                                             }).join("\n");
