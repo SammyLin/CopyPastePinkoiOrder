@@ -41,7 +41,7 @@ try {
     var address; // 地址或超商資訊
     if (shipping.indexOf("7-11") == 0 ) {
       zip_or_shipping = "7-11"
-      address         = order.getElementsByClassName('sevenstore')[0].getElementsByTagName('i')[0].innerHTML.trim();
+      address         = "由 Pinkoi 產生.";
     } else if (shipping.indexOf("郵寄") == 0) {
       zip_or_shipping = full_address.match(/\d+/)[0];
       address         = full_address.replace(zip_or_shipping, "").trim();
@@ -84,12 +84,12 @@ try {
                 })
   }
 
-  var str = tickets.map(function(item){return item.recipient + '\t' + 
-                                              item.buyer + '\t' + 
-                                              item.tel + '\t' + 
-                                              item.zip_or_shipping + '\t' + 
-                                              item.address + '\t' + 
-                                              item.shipping + '\t pinkoi-' + 
+  var str = tickets.map(function(item){return item.recipient + '\t' +
+                                              item.buyer + '\t' +
+                                              item.tel + '\t' +
+                                              item.zip_or_shipping + '\t' +
+                                              item.address + '\t' +
+                                              item.shipping + '\t pinkoi-' +
                                               item.order_no + '\t' +
                                               item.product_title + ' ' + item.quantity_detail + ' ' + item.variation_detail + ' ' + item.subtotal + '\t' +
                                               item.order_data + '\t' +
@@ -104,9 +104,8 @@ try {
   textarea.select();
   document.execCommand("copy");
   textarea.remove();
-  // alert('Pinkoi，訂單資料，已經放入剪貼簿了');
+  alert('Pinkoi，訂單資料，已經放入剪貼簿了');
 }
 catch (err) {
-  alert('有點問題。');
-  console.log(err);
+  alert('有點問題。' + err);
 }

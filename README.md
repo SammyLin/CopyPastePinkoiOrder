@@ -15,3 +15,18 @@
 1. 進到 [http://www.pinkoi.com/panel/order?p=paidonly](http://www.pinkoi.com/panel/order?p=paidonly) 或 其他訂單頁面
 1. 網址列中，找到 CopyPastePinkoiOrder 的 icon ![image](https://cloud.githubusercontent.com/assets/872230/16708118/0b71d3a8-461a-11e6-8421-830bdfbc24f9.png)
 2. 然後貼到 excel ，訂單都進來囉....
+
+## 上架方法
+
+1.打包
+記得修改 `src/manifest.json` 的 `version``
+
+```
+make # 打包
+```
+
+2.上架
+到 https://chrome.google.com/webstore/developer/dashboard 上架，把 `pkg/v?.?-CopyPastePinkoiOrder.zip` 上傳。
+
+大約約 60 分鐘後，就能夠使用了。
+
